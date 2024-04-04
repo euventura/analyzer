@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Entity;
+use App\Models\Graha;
 use App\Services\Vedastro\Vedastro;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -70,6 +71,7 @@ class ProcessEntities implements ShouldQueue
         foreach($this->divisions as $division => $dataIndex)
         {
             $planetData = $this->mapData[$dataIndex];
+            $graha = new Graha();
         }
     }
 }

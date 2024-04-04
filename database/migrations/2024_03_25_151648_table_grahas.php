@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('grahas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('entity_id')->constrained();
+            $table->tinyInteger('bhava');
             $table->string('graha');
             $table->string('nakshatra')->nullable();
             $table->string('nakshatra_lord')->nullable();
