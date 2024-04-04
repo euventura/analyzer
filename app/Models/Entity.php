@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Casts\LatLong;
 use Faker\Core\Coordinates;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,12 +39,19 @@ class Entity extends Model
         return $this->hasMany(Event::class);
     }
 
-    protected function latlong(): Attribute
+    public function dashas()
     {
-        return Attribute::make(
-            get: fn ($value) => strtolower($value),
-        );
+        return $this->hasMany(Dasha::class);
     }
 
+    public function grahas()
+    {
+        return $this->hasMany(Graha::class);
+    }
+
+    public function bhavas()
+    {
+        return $this->hasMany(Bhava::class);
+    }
 
 }

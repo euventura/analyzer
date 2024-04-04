@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('grahas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('varga_id')->constrained();
-            $table->foreignId('bhava_id')->constrained();
-            $table->string('name');
+            $table->foreignId('entity_id')->constrained();
+            $table->string('graha');
             $table->string('nakshatra')->nullable();
-            $table->json('lordship')->nullable();
+            $table->string('nakshatra_lord')->nullable();
+            $table->json('lordship_of')->nullable();
             $table->decimal('degree', 16, 14);
             $table->timestamps();
         });

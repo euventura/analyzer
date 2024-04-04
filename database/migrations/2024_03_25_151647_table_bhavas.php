@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vargas', function (Blueprint $table) {
+        Schema::create('bhavas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
             $table->tinyInteger('division');
-            $table->boolean('rasi')->default(true);
+            $table->tinyInteger('house');
+            $table->tinyInteger('graha');
+            $table->decimal('cusp');
+            $table->string('cusp_nakshatra')->nullable();
+            $table->string('cusp_nakshatra_lord')->nullable();
+            $table->decimal('start')->nullable();
+            $table->decimal('end')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vargas');
+        Schema::dropIfExists('bhavas');
     }
 };

@@ -33,19 +33,24 @@ class Vedastro
             $client = $this->buildClient();
             return $this->handleResponse($client->request('GET', $this->baseUri . '/' . $url));
         } catch (\Throwable $th) {
-            throw $$th;
+            throw $th;
         }
     }
 
     protected function handleResponse($response) : array
     {
-        return json_decode($response->getBody(), true);
+        $body = json_decode($response->getBody(), true);
+        if ($body['Status'] == 'Pass'){
+            return $body['Payload'];
+        }
+        throw new \Exception("Error Processing Request", 1);
+        
     }
 
     public function getMap() : array
     {
 
-        return $this->request($this->buildUrl('AllTimeData'));
+        return $this->request($this->buildUrl('AllTimeData'))['AllTimeData'];
     }
 
     public function getDasha() : array

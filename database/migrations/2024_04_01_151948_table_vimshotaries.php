@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dashas', function (Blueprint $table) {
+        Schema::create('vimshotaries', function (Blueprint $table) {
             $table->id();
-            $table->string('dashable_type');
-            $table->bigInteger('dashable_id');
+            $table->foreignId('entity_id')->constrained();
+            $table->string('graha');
+            $table->bigInteger('parent_id')->nullable();
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dashas');
+        Schema::dropIfExists('vimshotaries');
     }
 };
